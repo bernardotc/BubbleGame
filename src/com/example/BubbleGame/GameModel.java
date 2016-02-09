@@ -13,7 +13,7 @@ public class GameModel {
     ArrayList<Sprite> sprites;
     int nSprites = 20;
     int score;
-    int timeRemaining = 1000000;
+    int timeRemaining = 60000;
 
     static Paint paintBlue, paintGreen;
 

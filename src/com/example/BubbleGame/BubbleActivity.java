@@ -51,7 +51,6 @@ public class BubbleActivity extends Activity {
 
     Rect rect;
 
-
     class GameThread extends Thread {
         // have
         boolean running = true;
