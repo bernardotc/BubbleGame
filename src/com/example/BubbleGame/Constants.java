@@ -4,8 +4,8 @@ package com.example.BubbleGame;
  * Created by bernardot on 2/9/16.
  */
 public interface Constants {
-    int minRadius = 10;
-    int randSize = 40;
+    int minRadiusFactor = 20;
+    int randSizeFactor = 8;
 
     int blueScore = -50;
     int greenScore = 10;

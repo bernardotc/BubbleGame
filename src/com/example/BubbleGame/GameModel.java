@@ -14,6 +14,7 @@ public class GameModel {
     int nSprites = 20;
     int score;
     int timeRemaining = 60000;
+    double width, height;
 
     static Paint paintBlue, paintGreen;
 
@@ -43,9 +44,11 @@ public class GameModel {
         return timeRemaining <= 0;
     }
 
-    public GameModel() {
+    public GameModel(double width, double height) {
         System.out.println("Bubble GameModel: GameModel()");
-        initSprites();
+        this.width = width;
+        this.height = height;
+        initSprites(width, height);
         score = 0;
         System.out.println("Bubble GameModel:  finished in ()");
     }
@@ -54,17 +57,17 @@ public class GameModel {
         for (Sprite s : sprites) {
             if (s.contains(x, y)) {
                 score += s.getScore();
-                s.reSpawn();
-                return;
+                s.reSpawn(this.width, this.height);
+                //return;
             }
         }
     }
 
-    void initSprites() {
+    void initSprites(double width, double height) {
         sprites = new ArrayList<Sprite>();
         for (int i = 0; i < nSprites; i++) {
             Paint p = i % 2 == 0 ? paintBlue : paintGreen;
-            sprites.add(new Sprite(p));
+            sprites.add(new Sprite(p, width, height));
         }
     }
 }

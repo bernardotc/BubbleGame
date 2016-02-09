@@ -16,21 +16,21 @@ public class Sprite {
     float rad;
     Paint fg;
 
-    public Sprite(Paint fg) {
-        this();
+    public Sprite(Paint fg, double width, double height) {
+        this(width, height);
         this.fg = fg;
     }
 
     static Random random = new Random();
 
-    public Sprite() {
+    public Sprite(double width, double height) {
         s = new Vector2d();
         v = new Vector2d();
-        reSpawn();
+        reSpawn(width, height);
     }
 
-    public void reSpawn() {
-        rad = minRadius + random.nextInt(randSize);
+    public void reSpawn(double width, double height) {
+        rad = (float) (width / minRadiusFactor + random.nextInt((int) (width / randSizeFactor)));
         s.set(0,0);
         v.set(velocityScale * (float) random.nextGaussian(),
                 velocityScale * (float) random.nextGaussian());

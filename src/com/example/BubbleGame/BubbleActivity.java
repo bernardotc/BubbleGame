@@ -3,9 +3,11 @@ package com.example.BubbleGame;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 public class BubbleActivity extends Activity {
 
+    DisplayMetrics metrics;
     SpriteView view;
     GameModel model;
     // keep a reference to the running thread so
@@ -19,7 +21,9 @@ public class BubbleActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        model = new GameModel();
+        metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        model = new GameModel(metrics.widthPixels, metrics.heightPixels);
         view = new SpriteView(this);
         setContentView(view);
         System.out.println(tag + model);
